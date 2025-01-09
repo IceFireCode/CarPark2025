@@ -46,24 +46,60 @@ input: [[1,0,0,0,0],
         [0,0,0,0,2]]
 result: [R0]
 
-🔎 which floor ???
-🎬 Test 4.a: _which floor is parked my car_
-input: [[0,0,0,0,2]]
-result: 0
-
-🎬 Test 4.b: _which floor is parked my car II_
-input: [[1,0,0,0,0],
-        [0,0,0,0,2]]
-result: 0
-
-🎬 Test 4.c: _which floor is parked my car III_
-input: [[0,0,0,1,2],
-        [0,0,0,0,0]]
-result: 1
-
 Test 5: _2 floors, car on exit 2 floor, starcase_
 input: [[0,0,0,2,1],
         [0,0,0,0,0]]
 result: ['R1', 'D1', 'R0']
 
 NEXT: we need to move on the LEFT
+
+## 🍅 Pomodoro 3
+
+🍅 Implement test for multiple floors
+
+- ✅ Implement tests to get the exact car floor
+- ✅ Implement findMyCarFloor function
+- 🍅 Implemnt tests to get the exact stairs if exist
+
+🔎 which floor ???
+🎬 Test 4.a: _which floor is parked my car_ ✅
+input: [[0,0,0,0,2]]
+result: 0
+
+🎬 Test 4.b: _which floor is parked my car II_ ✅
+input: [[1,0,0,0,0],
+        [0,0,0,0,2]]
+result: 0
+
+🎬 Test 4.c: _which floor is parked my car III_ ✅
+input: [[0,0,0,1,2],
+        [0,0,0,0,0]]
+result: 1
+
+## 🍅 Pomodoro 4
+
+Implement test for multiple floors
+
+- ✅ Implemnt tests to get the exact stairs if exist
+
+🎬 Test 5.a: _where is stairs on a floor I_ ✅
+input: [[0,0,0,1,2],
+        [0,0,0,0,0]]
+result: 1
+
+🎬 Test 5: _2 floors, car on exit 2 floor, staircase_
+input: [[0,0,0,2,1],
+        [0,0,0,0,0]]
+result: ['R1', 'D1', 'R0']
+
+## 🍅 Pomodoro 5
+
+Implement test for multiple floors going left and right
+
+- ✅ Implemnt tests to get the exact stairs if exist
+
+🎬 Test 6: _3 floors, car on exit 3 floor, staircase_
+input: [[0,0,0,2,1],
+        [1,0,0,0,0],
+        [0,0,0,0,0]]
+result: ['R1', 'D1', 'L4', 'D1', 'R4']

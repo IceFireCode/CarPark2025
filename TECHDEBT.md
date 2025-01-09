@@ -23,3 +23,11 @@ This document tracks known technical debt in the CarPark2025 project. Use this a
   TODO: what we wanna do?
 
 - 📝 check the describe of the atomic behaviors.
+
+# pomodoro 3
+
+- look for a possible method of Array to not use for loop in findMyCarFloor
+
+# Pomodoro 4
+
+- indexOf returns undefined but we are not controlling it
