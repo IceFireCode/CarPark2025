@@ -1,4 +1,4 @@
-// src/index.ts
+// src/floorIndex.ts
 export class Carpark {
   private yourCar: number = 2;
   private stairCase: number = 1;
@@ -9,30 +9,32 @@ export class Carpark {
     const carFloor: number | undefined = this.findMyCarFloor();
     if (carFloor === undefined) return [];
 
-    let carFloorIndex: number = this.getIndexFromFloor(carFloor);
-    let route: string[] = [];
+    const carFloorIndex: number = this.getIndexFromFloor(carFloor);
 
+    let route: string[] = [];
     let carSpotOnFloor: number = this.findMyCarOnThisFloor(
       this.carParkLayout[carFloorIndex]
     );
 
-    // floors with stairs
-    for (let i = carFloor; i > 0; i--) {
-      carFloorIndex = this.getIndexFromFloor(i);
-      const stairsSpotOnFloor: number = this.findStairsInFloor(
-        this.carParkLayout[carFloorIndex]
-      );
-      if (carSpotOnFloor >= stairsSpotOnFloor) {
-        route.push('R' + (carSpotOnFloor - stairsSpotOnFloor));
-      } else {
-        route.push('L' + (stairsSpotOnFloor - carSpotOnFloor));
+    this.carParkLayout.forEach((floorLayout, floorIndex) => {
+      const isParkedCarFloorOrLower = floorIndex >= carFloorIndex;
+      if (isParkedCarFloorOrLower) {
+        const isGroundFloor = floorIndex == this.carParkLayout.length - 1;
+        if (isGroundFloor) {
+          route.push('R' + carSpotOnFloor);
+        } else {
+          const stairsSpotOnFloor: number = this.findStairsInFloor(floorLayout);
+          if (carSpotOnFloor >= stairsSpotOnFloor) {
+            route.push('R' + (carSpotOnFloor - stairsSpotOnFloor));
+          } else {
+            route.push('L' + (stairsSpotOnFloor - carSpotOnFloor));
+          }
+          route.push('D1');
+          carSpotOnFloor = stairsSpotOnFloor;
+        }
       }
-      route.push('D1');
-      carSpotOnFloor = stairsSpotOnFloor;
-    }
+    });
 
-    // bottom floor
-    route.push('R' + carSpotOnFloor);
     return route;
   }
 
